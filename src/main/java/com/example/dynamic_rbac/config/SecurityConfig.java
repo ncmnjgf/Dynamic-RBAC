@@ -50,9 +50,13 @@ public class SecurityConfig {
                         .requestMatchers(
                                 "/h2-console/**",
                                 "/v3/api-docs/**",
+                                "/v3/api-docs",
                                 "/swagger-ui/**",
                                 "/swagger-ui.html",
-                                "/error"
+                                "/swagger-resources/**",
+                                "/webjars/**",
+                                "/error",
+                                "/favicon.ico"
                         ).permitAll()
                         .anyRequest().authenticated()
                 )
