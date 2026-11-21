@@ -1,6 +1,8 @@
 package com.example.dynamic_rbac.controller;
 
 import com.example.dynamic_rbac.dto.ApiResponse;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -12,10 +14,12 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/secure-data")
+@Tag(name = "Secure Data", description = "Protected business resource endpoints")
 public class SecureDataController {
 
     @GetMapping
     @PreAuthorize("hasPermission(null, 'SECURE_DATA_READ')")
+    @Operation(summary = "Access secure classified data", description = "Requires dynamic permission: SECURE_DATA_READ")
     public ResponseEntity<ApiResponse<Map<String, Object>>> getSecureData(Authentication authentication) {
         Map<String, Object> data = Map.of(
                 "title", "Confidential Classified Data",
