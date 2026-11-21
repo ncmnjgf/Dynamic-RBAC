@@ -208,27 +208,4 @@ curl -u user:user123 -X POST http://localhost:8080/roles \
 - **Code Coverage**: **91% Instruction Coverage** (exceeds the 80% mandatory requirement) verified with **JaCoCo**.
 - JaCoCo Report location: `target/site/jacoco/index.html`.
 
----
 
-## 🎥 5-Minute Video Recording Presentation Outline
-
-When recording your 5-minute video, follow this structured breakdown:
-
-1. **Introduction (0:00 - 0:45)**:
-   - Introduce yourself and the problem statement: why hardcoded role checks like `hasRole('ADMIN')` create technical debt.
-   - Introduce Dynamic RBAC: permission evaluation driven dynamically from database tables.
-2. **Architecture & Database Schema (0:45 - 1:45)**:
-   - Walk through the entities: `User`, `Role`, `Permission`, `UserRole`, `RolePermission`.
-   - Explain how junction tables establish many-to-many relationships stored in H2.
-3. **Core Security Engine & PermissionEvaluator (1:45 - 3:00)**:
-   - Show `CustomPermissionEvaluator.java`: highlight `hasPermission(...)` and the dynamic JPQL query querying permissions at runtime.
-   - Show controller annotations: `@PreAuthorize("hasPermission(null, 'ROLE_CREATE')")`.
-4. **Live Demonstration (3:00 - 4:15)**:
-   - Run the application via `mvn spring-boot:run`.
-   - Show a `POST /roles` call with `admin:admin123` (returns 201 Created).
-   - Show the same call with `user:user123` (returns 403 Forbidden with custom JSON error).
-   - Show `GET /secure-data` with `user:user123` (returns 200 OK).
-5. **Testing & Coverage Summary (4:15 - 5:00)**:
-   - Run `mvn test` in the terminal to show all 28 tests passing.
-   - Open `target/site/jacoco/index.html` in the browser showing **91% code coverage**.
-   - Conclude.
