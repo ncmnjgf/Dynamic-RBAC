@@ -134,7 +134,17 @@ This project delivers a **dynamic, database-driven RBAC engine** where:
 ```
 The server will start on `http://localhost:8080`.
 
-### 3. Pre-Seeded Default Users & Credentials
+### 3. Interactive Swagger / OpenAPI Documentation
+Once the application is running, access Swagger UI in your browser:
+- **Swagger UI URL:** `http://localhost:8080/swagger-ui.html` (or `http://localhost:8080/swagger-ui/index.html`)
+- **OpenAPI JSON Spec:** `http://localhost:8080/v3/api-docs`
+
+> **Note on Testing in Swagger UI:**  
+> Click the **Authorize** button (lock icon at the top right) in Swagger UI to test with different users:
+> - **Admin:** Username: `admin` | Password: `admin123`
+> - **Regular User:** Username: `user` | Password: `user123`
+
+### 4. Pre-Seeded Default Users & Credentials
 Upon startup, `DataInitializer` seeds:
 - **Admin**:
   - Username: `admin`
@@ -145,7 +155,7 @@ Upon startup, `DataInitializer` seeds:
   - Password: `user123`
   - Permissions: `SECURE_DATA_READ`
 
-### 4. H2 Web Console
+### 5. H2 Web Console
 - URL: `http://localhost:8080/h2-console`
 - JDBC URL: `jdbc:h2:mem:dynamic_rbac_db`
 - Username: `sa`
